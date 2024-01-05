@@ -1,0 +1,29 @@
+class DataStream {
+public:
+    int count=0; //to keep count of incoming integers
+    int last_k =0;  //to keep count of last k integers
+    int tempval,tempk;
+    DataStream(int value, int k) {
+        tempval=value;
+         tempk=k;
+        
+    }
+    
+    bool consec(int num) {
+        count++;                 //ftn calls count increase
+        if(num==tempval){         
+            last_k++;             // tracks if last 'k's are equal to value or not
+        }
+        else{
+            last_k=0;               
+        }
+        if(count<tempk){
+            return false;
+        }
+        else if(last_k>=tempk){         //last_k's must be greater, or equal to given k 
+            return true;
+        }
+        return false;
+        
+    }
+};
